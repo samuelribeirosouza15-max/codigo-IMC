@@ -1,58 +1,49 @@
 function calcularIMC() {
-    // Captura os elementos da página
-    const pesoInput = document.getElementById('peso');
-    const alturaInput = document.getElementById('altura');
+    const peso = parseFloat(document.getElementById('peso').value);
+    const altura = parseFloat(document.getElementById('altura').value);
+    
     const resultadoDiv = document.getElementById('resultado');
     const imcValor = document.getElementById('imc-valor');
     const imcBadge = document.getElementById('imc-badge');
+    const imcDica = document.getElementById('imc-dica');
 
-    const peso = parseFloat(pesoInput.value);
-    const altura = parseFloat(alturaInput.value);
-
-    // Validação inteligente
     if (!peso || !altura || peso <= 0 || altura <= 0) {
-        alert("Por favor, preencha o peso e a altura com valores maiores que zero.");
+        alert("Por favor, digite um peso e uma altura válidos.");
         return;
     }
 
-    // Executa o cálculo
     const imc = peso / (altura * altura);
-
-    // Atualiza o número grande na tela
     imcValor.innerText = imc.toFixed(2);
-
-    // Remove cores antigas do balão
     imcBadge.className = 'badge';
 
-    // Define o texto e a cor com base na tabela oficial de IMC
+    // Condições com classificação e dicas de saúde personalizadas
     if (imc < 18.5) {
         imcBadge.innerText = "Abaixo do peso";
         imcBadge.classList.add('bg-azul');
+        imcDica.innerText = "Dica: Procure um nutricionista para estruturar uma dieta focada em ganho de massa magra de forma saudável.";
     } else if (imc >= 18.5 && imc < 25) {
         imcBadge.innerText = "Peso ideal";
         imcBadge.classList.add('bg-verde');
+        imcDica.innerText = "Dica: Excelente! Seu peso está ótimo. Continue mantendo uma alimentação equilibrada e praticando exercícios.";
     } else if (imc >= 25 && imc < 30) {
         imcBadge.innerText = "Levemente acima do peso";
         imcBadge.classList.add('bg-laranja');
+        imcDica.innerText = "Dica: Atenção a pequenas trocas na alimentação e inclua caminhadas ou atividades físicas na sua rotina semanal.";
     } else if (imc >= 30 && imc < 35) {
         imcBadge.innerText = "Obesidade Grau I";
         imcBadge.classList.add('bg-vermelho');
-    } else if (imc >= 35 && imc < 40) {
-        imcBadge.innerText = "Obesidade Grau II";
-        imcBadge.classList.add('bg-vermelho');
+        imcDica.innerText = "Dica: É um bom momento para consultar um médico ou profissional de educação física para cuidar da saúde preventiva.";
     } else {
-        imcBadge.innerText = "Obesidade Grau III";
+        imcBadge.innerText = "Obesidade Grave";
         imcBadge.classList.add('bg-vermelho');
+        imcDica.innerText = "Dica: Recomenda-se acompanhamento médico especializado para traçar metas seguras de perda de peso e bem-estar.";
     }
 
-    // Mostra o resultado com a animação de fade
     resultadoDiv.classList.remove('hidden');
 }
 
-// Nova função para limpar os campos e esconder o resultado antigo
 function limparCampos() {
     document.getElementById('peso').value = '';
     document.getElementById('altura').value = '';
-    document.getElementById('resultado').value = '';
     document.getElementById('resultado').classList.add('hidden');
 }
