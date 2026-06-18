@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMC Pro</title>
+    <title>Calculadora de IMC Avançada</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
         <h2>Calculadora de IMC</h2>
-        <p class="subtitulo">Descubra sua classificação de saúde em segundos</p>
+        <p class="subtitulo">Descubra sua classificação de saúde e veja recomendações</p>
         
         <div class="input-group">
             <label for="peso">Peso (kg)</label>
@@ -31,6 +31,15 @@
             <p class="label-resultado">Seu resultado:</p>
             <h3 id="imc-valor">0.00</h3>
             <div id="imc-badge" class="badge">Classificação</div>
+            <p id="imc-dica" class="dica-texto"></p>
+        </div>
+
+        <div class="tabela-referencia">
+            <h4>Tabela de Referência (OMS)</h4>
+            <div class="linha-tabela azul"><span>Abaixo de 18.5</span> <span>Abaixo do peso</span></div>
+            <div class="linha-tabela verde"><span>18.5 até 24.9</span> <span>Peso ideal</span></div>
+            <div class="linha-tabela laranja"><span>25.0 até 29.9</span> <span>Levemente acima</span></div>
+            <div class="linha-tabela vermelho"><span>30.0 ou mais</span> <span>Obesidade</span></div>
         </div>
     </div>
 
