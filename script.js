@@ -1,49 +1,58 @@
 function calcularIMC() {
-    // Pega os valores digitados nas caixinhas do HTML
-    const peso = parseFloat(document.getElementById('peso').value);
-    const altura = parseFloat(document.getElementById('altura').value);
-    
-    // Pega os elementos onde vamos mostrar a resposta
+    // Captura os elementos da página
+    const pesoInput = document.getElementById('peso');
+    const alturaInput = document.getElementById('altura');
     const resultadoDiv = document.getElementById('resultado');
     const imcValor = document.getElementById('imc-valor');
-    const imcClassificacao = document.getElementById('imc-classificacao');
+    const imcBadge = document.getElementById('imc-badge');
 
-    // Valida se o usuário preencheu tudo certinho
-    if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
-        alert("Por favor, insira valores válidos para peso e altura.");
+    const peso = parseFloat(pesoInput.value);
+    const altura = parseFloat(alturaInput.value);
+
+    // Validação inteligente
+    if (!peso || !altura || peso <= 0 || altura <= 0) {
+        alert("Por favor, preencha o peso e a altura com valores maiores que zero.");
         return;
     }
 
-    // Calcula o IMC
+    // Executa o cálculo
     const imc = peso / (altura * altura);
 
-    // Mostra o valor do IMC com duas casas decimais
-    imcValor.innerText = `Seu IMC é: ${imc.toFixed(2)}`;
+    // Atualiza o número grande na tela
+    imcValor.innerText = imc.toFixed(2);
 
-    // Limpa classes antigas de cor do texto
-    imcClassificacao.className = '';
+    // Remove cores antigas do balão
+    imcBadge.className = 'badge';
 
-    // Verifica a classificação do IMC e define a mensagem e a cor
+    // Define o texto e a cor com base na tabela oficial de IMC
     if (imc < 18.5) {
-        imcClassificacao.innerText = "Classificação: Abaixo do peso";
-        imcClassificacao.classList.add('abaixo-peso');
+        imcBadge.innerText = "Abaixo do peso";
+        imcBadge.classList.add('bg-azul');
     } else if (imc >= 18.5 && imc < 25) {
-        imcClassificacao.innerText = "Classificação: Peso ideal (parabéns!)";
-        imcClassificacao.classList.add('peso-ideal');
+        imcBadge.innerText = "Peso ideal";
+        imcBadge.classList.add('bg-verde');
     } else if (imc >= 25 && imc < 30) {
-        imcClassificacao.innerText = "Classificação: Levemente acima do peso";
-        imcClassificacao.classList.add('sobrepeso');
+        imcBadge.innerText = "Levemente acima do peso";
+        imcBadge.classList.add('bg-laranja');
     } else if (imc >= 30 && imc < 35) {
-        imcClassificacao.innerText = "Classificação: Obesidade Grau I";
-        imcClassificacao.classList.add('obesidade');
+        imcBadge.innerText = "Obesidade Grau I";
+        imcBadge.classList.add('bg-vermelho');
     } else if (imc >= 35 && imc < 40) {
-        imcClassificacao.innerText = "Classificação: Obesidade Grau II (severa)";
-        imcClassificacao.classList.add('obesidade');
+        imcBadge.innerText = "Obesidade Grau II";
+        imcBadge.classList.add('bg-vermelho');
     } else {
-        imcClassificacao.innerText = "Classificação: Obesidade Grau III (mórbida)";
-        imcClassificacao.classList.add('obesidade');
+        imcBadge.innerText = "Obesidade Grau III";
+        imcBadge.classList.add('bg-vermelho');
     }
 
-    // Faz a caixinha do resultado aparecer na tela
+    // Mostra o resultado com a animação de fade
     resultadoDiv.classList.remove('hidden');
+}
+
+// Nova função para limpar os campos e esconder o resultado antigo
+function limparCampos() {
+    document.getElementById('peso').value = '';
+    document.getElementById('altura').value = '';
+    document.getElementById('resultado').value = '';
+    document.getElementById('resultado').classList.add('hidden');
 }
