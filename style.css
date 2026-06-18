@@ -1,89 +1,155 @@
-/* Configurações gerais da página */
+/* Reset básico e fontes modernas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
-/* Caixa branca centralizada da calculadora */
+/* Cartão principal centralizado */
 .container {
     background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     text-align: center;
-    width: 350px;
+    width: 380px;
 }
 
 h2 {
-    color: #333;
-    margin-bottom: 5px;
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 6px;
 }
 
-p {
-    color: #666;
+.subtitulo {
+    color: #7f8c8d;
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-/* Organização dos campos de digitação */
+/* Campos de entrada */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
 label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #444;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #34495e;
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-
-/* Botão de Calcular */
-button {
-    width: 100%;
     padding: 12px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
     font-size: 16px;
-    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+input:focus {
+    border-color: #3498db;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Botões lado a lado */
+.botoes-grupo {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: bold;
-    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-button:hover {
-    background-color: #218838;
+.btn-calcular {
+    flex: 2;
+    background-color: #2ecc71;
+    color: white;
 }
 
-/* Caixa de Resultado */
+.btn-calcular:hover {
+    background-color: #27ae60;
+    transform: translateY(-1px);
+}
+
+.btn-limpar {
+    flex: 1;
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+.btn-limpar:hover {
+    background-color: #cbd5e1;
+}
+
+/* Caixa de Resultado Animada */
 .resultado-box {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #e9ecef;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.label-resultado {
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+#imc-valor {
+    font-size: 32px;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+/* Balão indicador de classe */
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
 }
 
 .hidden {
     display: none;
 }
 
-/* Cores das classificações */
-.abaixo-peso { color: #ffc107; font-weight: bold; }
-.peso-ideal { color: #28a745; font-weight: bold; }
-.sobrepeso { color: #fd7e14; font-weight: bold; }
-.obesidade { color: #dc3545; font-weight: bold; }
+/* Cores dinâmicas para os estados de saúde */
+.bg-azul { background-color: #3498db; }
+.bg-verde { background-color: #2ecc71; }
+.bg-laranja { background-color: #f39c12; }
+.bg-vermelho { background-color: #e74c3c; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
