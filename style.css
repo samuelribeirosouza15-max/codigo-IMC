@@ -1,4 +1,3 @@
-/* Reset básico e fontes modernas */
 * {
     margin: 0;
     padding: 0;
@@ -11,13 +10,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px 0;
 }
 
-/* Cartão principal centralizado */
 .container {
     background-color: #ffffff;
-    padding: 35px;
+    padding: 30px;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     text-align: center;
@@ -32,13 +31,12 @@ h2 {
 
 .subtitulo {
     color: #7f8c8d;
-    font-size: 14px;
-    margin-bottom: 25px;
+    font-size: 13px;
+    margin-bottom: 20px;
 }
 
-/* Campos de entrada */
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: left;
 }
 
@@ -56,22 +54,20 @@ input {
     border: 2px solid #e2e8f0;
     border-radius: 8px;
     font-size: 16px;
-    transition: all 0.3s ease;
     background-color: #f8fafc;
+    transition: all 0.3s ease;
 }
 
 input:focus {
     border-color: #3498db;
     background-color: #fff;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-/* Botões lado a lado */
 .botoes-grupo {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -81,7 +77,6 @@ button {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
 .btn-calcular {
@@ -90,60 +85,86 @@ button {
     color: white;
 }
 
-.btn-calcular:hover {
-    background-color: #27ae60;
-    transform: translateY(-1px);
-}
-
 .btn-limpar {
     flex: 1;
     background-color: #e2e8f0;
     color: #475569;
 }
 
-.btn-limpar:hover {
-    background-color: #cbd5e1;
-}
-
-/* Caixa de Resultado Animada */
+/* Caixa de Resultado */
 .resultado-box {
-    margin-top: 25px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 12px;
     background-color: #f8fafc;
     border: 1px solid #e2e8f0;
+    margin-bottom: 20px;
     animation: fadeIn 0.4s ease forwards;
 }
 
 .label-resultado {
-    font-size: 12px;
+    font-size: 11px;
     color: #94a3b8;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
 }
 
 #imc-valor {
     font-size: 32px;
     color: #1e293b;
+    margin: 5px 0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
     margin-bottom: 10px;
 }
 
-/* Balão indicador de classe */
-.badge {
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 20px;
+.dica-texto {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.4;
+    background: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    border-left: 4px solid #cbd5e1;
+}
+
+/* Tabela de Referência Visual */
+.tabela-referencia {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #cbd5e1;
+    text-align: left;
+}
+
+.tabela-referencia h4 {
     font-size: 14px;
-    font-weight: bold;
-    color: white;
+    color: #64748b;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-.hidden {
-    display: none;
+.linha-tabela {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    font-weight: 500;
 }
 
-/* Cores dinâmicas para os estados de saúde */
+.azul { background-color: #e3f2fd; color: #1e88e5; }
+.verde { background-color: #e8f5e9; color: #43a047; }
+.laranja { background-color: #fff3e0; color: #fb8c00; }
+.vermelho { background-color: #ffebee; color: #e53935; }
+
+.hidden { display: none; }
+
 .bg-azul { background-color: #3498db; }
 .bg-verde { background-color: #2ecc71; }
 .bg-laranja { background-color: #f39c12; }
